@@ -1,11 +1,23 @@
-const playerFactory = () => {
-    return {};
+const playerFactory = (XorO) => {
+    return {
+        XorO
+    };
 }
 
 const gameBoard = (() => {
-    return {};
+    let board = ['', '', '', '', '', '', '', '', ''];
+    return {
+        board
+    };
 })();
 
 const displayController = (() => {
     return {};
 })();
+
+
+const cells = document.querySelectorAll('.cell');
+
+cells.forEach((cell, index) =>{
+    console.log(cell, index);
+})
