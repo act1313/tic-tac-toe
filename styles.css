@@ -16,14 +16,13 @@ html, body {
     align-items: center;
     display: flex;
     justify-content: center;
+    flex-direction: column-reverse;
 }
 
 .grid {
     display: inline-grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1px;
-    border: 5px solid #ccc;
-    border-radius: 25px;
     background-color: gray;
     gap: 0px;
 }
@@ -40,4 +39,10 @@ html, body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+.winnerText {
+    color: red;
+    font-size: 7.5rem;
+    padding-bottom: 10vh;
 }

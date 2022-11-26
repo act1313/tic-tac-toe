@@ -23,7 +23,9 @@ const gameBoard = (() => {
 
     let board = ['', '', '', '', '', '', '', '', ''];
     
+    const container = document.querySelector(".container");
     const cells = document.querySelectorAll(".cell");
+    const grid = document.querySelector(".grid");
 
     cells.forEach((cell, index) => {
         cell.addEventListener('click', (e) => {
@@ -47,18 +49,49 @@ const gameBoard = (() => {
     });
 
     function checkWinner() {
+        
         winCombos.forEach ((combo) => {
             if (board[combo[0]] == board[combo[1]] && board[combo[1]] == board[combo[2]] && board[combo[0]] != '') {
                 console.log("Winner");
 
                 if (player1.XorO == board[combo[0]]) {
                     player1.won = true;
+
+                    grid.style.display = "none";
+
+                    let winnerText = document.createElement("h1");
+                    winnerText.innerHTML = "The Winner is Player 1!";
+                    winnerText.classList.add("winnerText");
+                    container.appendChild(winnerText);
                 } else {
                     player2.won = true;
+
+                    grid.style.display = "none";
+
+                    let winnerText = document.createElement("h1");
+                    winnerText.innerHTML = "The Winner is Player 2!";
+                    winnerText.classList.add("winnerText");
+                    container.appendChild(winnerText);
                 }
             }
         });
-    };
+
+        let boardFull = 0;
+        for (let i = 0; i < board.length; i++) {
+            if (board[i] != '') {
+                boardFull++;
+            }    
+        }
+
+        if (boardFull == 9) {
+            grid.style.display = "none";
+
+            let winnerText = document.createElement("h1");
+            winnerText.innerHTML = "Player 1 and Player 2 have tied!";
+            winnerText.classList.add("winnerText");
+            container.appendChild(winnerText);
+        }
+    }
 
     return {
         board
