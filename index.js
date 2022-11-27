@@ -129,7 +129,3 @@ const gameBoard = (() => {
         board
     };
 })();
-
-const displayController = (() => {
-    return {};
-})();

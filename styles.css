@@ -22,18 +22,16 @@ html, body {
 .grid {
     display: inline-grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
     background-color: gray;
-    gap: 0px;
 }
 
 
 
 .cell {
     display: inline-block;
-    height: 20vh;
-    width: 20vh;
-    border: 5px solid #ccc;
+    height: 15vh;
+    width: 15vh;
+    border: 3px solid #ccc;
     font-size: 7.5rem;
     text-align: center;
     display: flex;
