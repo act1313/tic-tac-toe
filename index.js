@@ -26,6 +26,9 @@ const gameBoard = (() => {
     const container = document.querySelector(".container");
     const cells = document.querySelectorAll(".cell");
     const grid = document.querySelector(".grid");
+    const restartButton = document.querySelector(".restart");
+
+    restartButton.addEventListener('click', restartGame);
 
     cells.forEach((cell, index) => {
         cell.addEventListener('click', (e) => {
@@ -49,7 +52,6 @@ const gameBoard = (() => {
     });
 
     function checkWinner() {
-        
         winCombos.forEach ((combo) => {
             if (board[combo[0]] == board[combo[1]] && board[combo[1]] == board[combo[2]] && board[combo[0]] != '') {
                 console.log("Winner");
@@ -91,6 +93,36 @@ const gameBoard = (() => {
             winnerText.classList.add("winnerText");
             container.appendChild(winnerText);
         }
+    }
+
+    function restartGame() {
+        if (grid.style.display == "none") {
+            restartGrid();
+            removeWinnerText();
+            console.log("works?")
+        } else {
+            restartGrid();
+        }
+    }
+
+    function restartGrid() {
+        grid.style.display = "inline-grid";
+        cells.forEach((cell) => {
+            cell.innerHTML = '';
+        });
+        player1.turn = true;
+        player2.turn = false;
+        player1.won = false;
+        player2.won = false;
+
+        for (let i = 0; i < board.length; i++) {
+            board[i] = '';
+        }
+    }
+
+    function removeWinnerText() {
+        const winnerText = document.querySelector(".winnerText");
+        container.removeChild(winnerText);
     }
 
     return {
